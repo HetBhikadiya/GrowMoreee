@@ -46,6 +46,5 @@ public class StocksList {
         }
     }
     public void sortingByPrize(){
-
     }
 }

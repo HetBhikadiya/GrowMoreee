@@ -278,6 +278,7 @@ public class Main {
                                             pst5.setDouble(1, bal);  // Set the balance
                                             pst5.setString(2, user.email);
                                             pst5.executeUpdate();
+
                                             System.out.println("Your balance is = " + bal);
                                             break;
                                         case 7:
