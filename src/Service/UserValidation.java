@@ -25,14 +25,14 @@ public class UserValidation {
             validname = true;
 
             if (name.length() == 0) {
-                System.out.println("Invalid Name");
+                System.out.println("NOTICE : Invalid Name");
                 validname = false;
             }
 
             for (int i = 0; i < name.length(); i++) {
                 char c = name.charAt(i);
                 if (!Character.isLetter(c)) {
-                    System.out.println("Invalid Name: Only alphabets allowed");
+                    System.out.println("NOTICE : Invalid Name: Only alphabets allowed");
                     validname = false;
                     break;
                 }
@@ -57,7 +57,7 @@ public class UserValidation {
                     System.out.println("You must be at least 18 years old.");
                 }
             } catch (Exception e) {
-                System.out.println("Invalid date format. Please use yyyy-MM-dd");
+                System.out.println("NOTICE : Invalid date format. Please use yyyy-MM-dd");
             }
 
         } while (!validDate);
@@ -81,7 +81,7 @@ public class UserValidation {
             }
 
             if (!validAadhar) {
-                System.out.println("Invalid Aadhar number. Please try again.");
+                System.out.println("NOTICE : Invalid Aadhar number. Please try again.");
             }
 
         } while (!validAadhar);
@@ -116,7 +116,7 @@ public class UserValidation {
             }
 
             if (!validPan) {
-                System.out.println("Invalid PAN number. Please enter again.");
+                System.out.println("NOTICE : Invalid PAN number. Please enter again.");
             }
 
         } while (!validPan);

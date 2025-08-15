@@ -20,8 +20,21 @@ public class Main {
         ResultSet rs;
         double cur_price=0;
         double bal=0;
+        try{
+            System.out.println("***************************************");
+            System.out.println("||     WELCOME TO GROWMOREEE         ||");
+            System.out.println("||      PRESENTED BY LJ-A4           ||");
+            System.out.println("***************************************");
+            Thread.sleep(2000);
+            System.out.println();
+            System.out.println("--------Trade with patience, profit with discipline--------");
+            System.out.println();
+            Thread.sleep(2000);
+        }catch(Exception e){
+        }
         while (true) {
-            System.out.println("1. Register\n2. Login\n3.exit");
+            System.out.println("-----Enter ");
+            System.out.println("1. For Register \n2. For Login\n3. To exit");
             int choice = 0;
             while (true) {
                 try {
@@ -30,7 +43,7 @@ public class Main {
                     sc.nextLine();
                     break;
                 } catch (InputMismatchException e) {
-                    System.out.println("Invalid input. Please enter a valid integer.");
+                    System.out.println("NOTICE : Invalid input. Please enter a valid integer.");
                     sc.nextLine();
                 }
             }
@@ -38,11 +51,15 @@ public class Main {
                 case 1:
                     uv.UserInput();
                     if (uv.age < 18) {
-                        System.out.println("You are not eligible for Trading!!");
+                        System.out.println("Sorry! You are not eligible for Trading!!");
+                        System.out.println("Your age must greater then 18.");
                         return;
                     }
                     if (userService.register(uv.name, uv.password, uv.aadhar, uv.pan, uv.email)) {
-                        System.out.println("Registered successfully.");
+                        System.out.println("***************************************");
+                        System.out.println("     Registered successfully.");
+                        System.out.println("     Please Log in to Trade.");
+                        System.out.println("***************************************");
                     } else {
                         System.out.println("Username already exists.");
                         System.out.println("Now, Please Log In");
@@ -67,7 +84,7 @@ public class Main {
                         }
 
                         if (!isValidmail) {
-                            System.out.println("Invalid email! Enter a correct email.");
+                            System.out.println("NOTICE : Invalid email! Enter a correct email.");
                         }
                     } while (!isValidmail);
                     String q1 = "select Mail_id from users where Mail_id=?";
@@ -79,7 +96,7 @@ public class Main {
                         System.out.println("Please Sign Up And Then Log In");
                         break;
                     } else {
-                        System.out.println("email found please enter your pass");
+                        System.out.println("Email found please enter your pass: ");
                         String pass = sc.next();
                         String q2 = "select password from users where Mail_id=?";
                         PreparedStatement pst2 = con.prepareStatement(q2);
@@ -106,7 +123,7 @@ public class Main {
                                             sc.nextLine();
                                             break;
                                         } catch (InputMismatchException e) {
-                                            System.out.println("Invalid input. Please enter a valid integer.");
+                                            System.out.println("NOTICE : Invalid input. Please enter a valid integer.");
                                             sc.nextLine();
                                         }
                                     }
@@ -134,25 +151,25 @@ public class Main {
                                             cur_price = dbq.getCurPrice();
                                             int maxShares = (int) (bal / cur_price);
                                             if (maxShares == 0) {
-                                                System.out.println("Add sufficient Balance");
+                                                System.out.println("NOTICE : Add sufficient Balance");
                                                 break;
                                             }
-                                            System.out.println("you can buy maximum " + maxShares + " shares");
+                                            System.out.println("You can buy maximum " + maxShares + " shares");
                                             while (true) {
                                                 try {
                                                     System.out.print("Enter Quantity: ");
                                                     qty = sc.nextInt();
                                                     if (qty <= 0) {
-                                                        System.out.println("Please enter a positive quantity.");
+                                                        System.out.println("NOTICE : Please enter a positive quantity.");
                                                         continue;
                                                     }
                                                     if (maxShares < qty) {
-                                                        System.out.println("you can buy maximum " + maxShares + " shares");
+                                                        System.out.println("You can buy maximum " + maxShares + " shares");
                                                         continue;
                                                     }
                                                     break;
                                                 } catch (InputMismatchException e) {
-                                                    System.out.println("Invalid input. Please enter a valid quantity (numbers only).");
+                                                    System.out.println("NOTICE : Invalid input. Please enter a valid quantity (numbers only).");
                                                     sc.next();
                                                 }
                                             }
@@ -166,7 +183,7 @@ public class Main {
                                             dbq.dbtransaction(user.email, sym, qty, cur_price,"BUY");
                                             break;
                                         case 3:
-                                            System.out.println("your portFolio is");
+                                            System.out.println("Your portFolio is");
                                             user.showPortfolio(user.email);
                                             if(User.SymQty.isEmpty()){
                                                 System.out.println("No Data Available");
@@ -189,7 +206,7 @@ public class Main {
                                             System.out.println("Current price : "+cur_price);
                                             System.out.println("---------------------------------------------");
 
-                                            System.out.println("if you want to sell, then Enter Y/y otherwise N/n");
+                                            System.out.println("If you want to sell, then Enter Y/y otherwise N/n");
                                             String ch=sc.next();
                                             if(ch.equalsIgnoreCase("N")){
                                                 break;
@@ -208,12 +225,12 @@ public class Main {
                                                         break;
                                                     }
                                                 } catch (InputMismatchException e) {
-                                                    System.out.println("Invalid input. Please enter a valid integer.");
+                                                    System.out.println("NOTICE : Invalid input. Please enter a valid integer.");
                                                     sc.nextLine();
                                                 }
                                             }
                                             if(sellqty>QtySell){
-                                                System.out.println("you can sell maximum " + QtySell + " shares");
+                                                System.out.println("You can sell maximum " + QtySell + " shares");
                                                 break;
                                             }
                                             double sellAmount=cur_price*sellqty;
@@ -242,10 +259,11 @@ public class Main {
                                             break;
                                         case 5:
                                             dbq.transactionHistory(user.email);
+                                            // date wisw transacrtions
                                             break;
                                         case 6:
                                             double fund = user.addFunds();
-                                            System.out.println("funds added");
+                                            System.out.println("Funds added successfully!");
                                             sql = "SELECT Balance FROM users WHERE Mail_id = ?";
                                             pstt = con.prepareStatement(sql);
                                             pstt.setString(1, user.email);  // Or any email you want to query
@@ -263,12 +281,13 @@ public class Main {
                                             System.out.println("Your balance is = " + bal);
                                             break;
                                         case 7:
-                                            System.out.println("Bye!");
+                                            System.out.println("Good Bye,Have a nice day!");
                                             return;
                                     }
                                 }
                             } else {
-                                System.out.println("pass wrong");
+                                System.out.println("oops! You entered Wrong Pass.");
+                                System.out.println("Enter correct Password");
                             }
                         }
                     }

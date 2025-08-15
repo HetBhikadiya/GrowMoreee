@@ -45,4 +45,7 @@ public class StocksList {
             temp=temp.next;
         }
     }
+    public void sortingByPrize(){
+
+    }
 }
