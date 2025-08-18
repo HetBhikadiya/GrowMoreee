@@ -1,5 +1,10 @@
 package Service;
+import DB.DBConnection;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Scanner;
@@ -16,7 +21,7 @@ public class UserValidation {
 
     static Scanner sc = new Scanner(System.in);
 
-    public void UserInput() {
+    public void UserInput() throws SQLException {
         // Name
         boolean validname;
         do {
@@ -34,6 +39,17 @@ public class UserValidation {
                 if (!Character.isLetter(c)) {
                     System.out.println("NOTICE : Invalid Name: Only alphabets allowed");
                     validname = false;
+                    break;
+                }
+            }
+            String sname="select username from users";
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pstname=con.prepareStatement(sname);
+            ResultSet rsname=pstname.executeQuery();
+            while(rsname.next()){
+                if(name.equals(rsname.getString(1))){
+                    System.out.println("name is already exists please enter diffrent name");
+                    validname=false;
                     break;
                 }
             }
