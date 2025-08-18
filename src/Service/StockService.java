@@ -2,15 +2,17 @@ package Service;
 import DS.StocksList;
 import DB.DBConnection;
 import Model.Stock;
-
+import DS.StocksList;
 import java.sql.*;
+import java.util.*;
 import java.util.*;
 
 public class StockService {
-
+    Scanner sc=new Scanner(System.in);
     StocksList stocksList=new StocksList();
 
-    public void getAllStocks() throws SQLException {
+    public void
+    getAllStocks() throws SQLException {
         Connection con = DBConnection.getConnection();
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM stocks");
@@ -24,6 +26,13 @@ public class StockService {
             stocksList.InsertStocks(sym,name,prev,today);
         }
         stocksList.DisplayStock();
+        System.out.println("For sorting by prise, enter 1 otherwise 0");
+        int sort=sc.nextInt();
+        if(sort==1){
+            stocksList.sortingByPrize();
+        }
+        stocksList.sortingByPrize();
+
     }
 
     // ✅ Helper method added inside the class

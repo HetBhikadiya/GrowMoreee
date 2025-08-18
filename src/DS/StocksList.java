@@ -2,6 +2,8 @@ package DS;
 import Service.StockService;
 import Service.StockService.*;
 
+import java.util.List;
+
 public class StocksList {
     class NewStock{
         NewStock next;
@@ -46,5 +48,36 @@ public class StocksList {
         }
     }
     public void sortingByPrize(){
+        if(first == null || first.next == null){
+            return; // no need to sort
+        }
+
+        boolean swapped;
+        do{
+            swapped = false;
+            NewStock current = first;
+            while(current.next != null){
+                if(current.today > current.next.today){
+                    // swap all fields
+                    String tsym = current.Symbol;
+                    String tname = current.name;
+                    double tprev = current.prev;
+                    double ttoday = current.today;
+
+                    current.Symbol = current.next.Symbol;
+                    current.name = current.next.name;
+                    current.prev = current.next.prev;
+                    current.today = current.next.today;
+
+                    current.next.Symbol = tsym;
+                    current.next.name = tname;
+                    current.next.prev = tprev;
+                    current.next.today = ttoday;
+
+                    swapped = true;
+                }
+                current = current.next;
+            }
+        }while(swapped);
     }
 }

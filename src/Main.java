@@ -1,5 +1,7 @@
+import DS.StocksList;
 import Model.User;
 import Model.User.*;
+import DS.StocksList.*;
 import Service.*;
 import DB.*;
 import java.sql.*;
@@ -12,6 +14,7 @@ public class Main {
         User user = new User();
         DBConnection db = new DBConnection();
         DBQueries dbq=new DBQueries();
+        StocksList sl=new StocksList();
         StockService stockService = new StockService();
         UserValidation uv = new UserValidation();
         Connection con = db.getConnection();
@@ -25,12 +28,13 @@ public class Main {
             System.out.println("||     WELCOME TO GROWMOREEE         ||");
             System.out.println("||      PRESENTED BY LJ-A4           ||");
             System.out.println("***************************************");
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             System.out.println();
             System.out.println("--------Trade with patience, profit with discipline--------");
             System.out.println();
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }catch(Exception e){
+
         }
         while (true) {
             System.out.println("-----Enter ");
