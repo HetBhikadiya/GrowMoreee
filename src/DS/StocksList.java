@@ -47,11 +47,10 @@ public class StocksList {
             temp=temp.next;
         }
     }
-    public void sortingByPrize(){
+  /*  public void sortingByPrize(){
         if(first == null || first.next == null){
-            return; // no need to sort
+            return;
         }
-
         boolean swapped;
         do{
             swapped = false;
@@ -79,5 +78,5 @@ public class StocksList {
                 current = current.next;
             }
         }while(swapped);
-    }
+    }*/
 }

@@ -26,16 +26,16 @@ public class StockService {
             stocksList.InsertStocks(sym,name,prev,today);
         }
         stocksList.DisplayStock();
-        System.out.println("For sorting by prise, enter 1 otherwise 0");
+      /*  System.out.println("For sorting by prise, enter 1 otherwise 0");
         int sort=sc.nextInt();
         if(sort==1){
             stocksList.sortingByPrize();
         }
         stocksList.sortingByPrize();
-
+*/
     }
 
-    // ✅ Helper method added inside the class
+    // showing stock format
     public static String TableShow(String str, int length) {
         while (str.length() < length) {
             str += " ";

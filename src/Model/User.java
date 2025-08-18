@@ -13,6 +13,7 @@ public class User {
     public static HashMap<String,Integer> SymQty=new HashMap<>();
     public static HashMap<String,Double> SymPrice=new HashMap<>();
     StockService st=new StockService();
+
     public void showPortfolio(String mail) throws SQLException {
         Connection con = DBConnection.getConnection();
         String balanceQuery = "SELECT Balance FROM users WHERE Mail_id = ?";
@@ -107,7 +108,7 @@ public class User {
 
             } catch (InputMismatchException e) {
                 System.out.println("Error: Please enter a valid number.");
-                sc.nextLine(); // Clear invalid input
+                sc.nextLine();
             }
         }
 

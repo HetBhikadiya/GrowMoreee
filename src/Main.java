@@ -248,10 +248,12 @@ public class Main {
                                             System.out.println("Transaction completed");
                                             if(cur_price>avgPrice){
                                                 double profit=(cur_price-avgPrice)*sellqty;
+                                                profit=((int)(profit*100))/100;
                                                 System.out.println("You make Profit of "+profit+" Rs.");
                                             }
                                             else{
                                                 double loss=(avgPrice-cur_price)*sellqty;
+                                                loss=((int)(loss*100))/100;
                                                 System.out.println("You make Loss of "+loss+" Rs.");
                                             }
                                             break;
@@ -292,7 +294,7 @@ public class Main {
                                 }
                             } else {
                                 System.out.println("oops! You entered Wrong Pass.");
-                                System.out.println("Enter correct Password");
+                                System.out.println("Kindly enter correct Password");
                             }
                         }
                     }
