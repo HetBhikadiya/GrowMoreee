@@ -111,7 +111,6 @@ public class User {
                 sc.nextLine();
             }
         }
-
         return funds;
     }
 }

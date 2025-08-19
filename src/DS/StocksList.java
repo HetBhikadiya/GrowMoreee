@@ -22,5 +22,4 @@ public class StocksList {
             System.out.println(stock);
         }
     }
-
 }

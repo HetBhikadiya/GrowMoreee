@@ -30,3 +30,4 @@ public class Stock {
                 symbol, companyName, category, previousClosePrice, todayOpenPrice);
     }
 }
+

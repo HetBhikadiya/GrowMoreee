@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
 
+
 public class DBQueries {
     static int count = 0;
     StockService stockService = new StockService();
@@ -125,3 +126,4 @@ public class DBQueries {
         }
     }
 }
+
