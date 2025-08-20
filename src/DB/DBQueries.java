@@ -17,6 +17,8 @@ public class DBQueries {
     public double getCurPrice() {
         return this.cur_price;
     }
+
+    // Writing content into file
     public void wirtetofile(String mail, String type, String str, int srnum) throws IOException {
         File folder = new File("D:/growMoree");
         if (!folder.exists()) {
@@ -33,6 +35,8 @@ public class DBQueries {
 
         System.out.println("File saved at: " + f.getAbsolutePath());
     }
+
+    // Display Share details using symbol
     public String getSharesDetail(String sym) throws Exception {
         double today_open = 0;
         String detail = null;
@@ -62,6 +66,8 @@ public class DBQueries {
             return null;
         }
     }
+
+    // add Transaction details into Database & in file
     public void dbtransaction(String mail, String symbol, int qty, double price, String buysell) throws SQLException, IOException {
         Connection con = DBConnection.getConnection();
         Timestamp time = new Timestamp(System.currentTimeMillis());
@@ -81,6 +87,8 @@ public class DBQueries {
 
         wirtetofile(mail, type, str, count);
     }
+
+    // add profit/loss details into Database & in file
     public void dbprofitloss(String mail, double profitloss) throws Exception {
         Connection con = DBConnection.getConnection();
         Timestamp time = new Timestamp(System.currentTimeMillis());
@@ -107,6 +115,8 @@ public class DBQueries {
         count++;
         wirtetofile(mail, type, print.toString(), count);
     }
+
+    // Fetch transaction history from Database
     public void transactionHistory(String mail) throws SQLException {
         Connection con = DBConnection.getConnection();
         String sql = "select * from transactions where Mail_id=?";

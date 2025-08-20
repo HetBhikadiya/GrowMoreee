@@ -7,6 +7,8 @@ import java.sql.*;
 import java.util.HashMap;
 
 public class UserService {
+
+    // Adding user registration details into database
     private final HashMap<String, User> userMap = new HashMap<>();
     public boolean register(String username, String password, String aadhar, String pan, String mail) throws SQLException {
         Connection con = DBConnection.getConnection();

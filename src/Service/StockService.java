@@ -10,6 +10,7 @@ public class StockService {
     Scanner sc = new Scanner(System.in);
     StocksList stocksList = new StocksList();
 
+        // Fetch stocks details from Database
     public void getAllStocks() throws SQLException {
         Connection con = DBConnection.getConnection();
         Statement st = con.createStatement();
@@ -31,6 +32,7 @@ public class StockService {
         con.close();
     }
 
+        // regex
     public static String TableShow(String str, int length) {
         while (str.length() < length) {
             str += " ";
@@ -38,7 +40,8 @@ public class StockService {
         return str;
     }
 
-    public Stock getStock(String symbol) throws SQLException {
+
+   /* public Stock getStock(String symbol) throws SQLException {
         Connection con = DBConnection.getConnection();
         PreparedStatement ps = con.prepareStatement("SELECT * FROM stocks WHERE Symbols=?");
         ps.setString(1, symbol);
@@ -60,6 +63,6 @@ public class StockService {
         ps.close();
         con.close();
         return stock;
-    }
+    }*/
 }
 
