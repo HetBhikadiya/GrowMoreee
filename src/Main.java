@@ -26,7 +26,6 @@ public class Main {
         try{
             System.out.println("***************************************");
             System.out.println("||     WELCOME TO GROWMOREEE         ||");
-            System.out.println("||      PRESENTED BY LJ-A4           ||");
             System.out.println("***************************************");
             Thread.sleep(1000);
             System.out.println();
@@ -37,7 +36,7 @@ public class Main {
 
         }
         while(true) {
-            System.out.print("Enter your option : ");
+            System.out.println("Enter your option : ");
             System.out.println("1. Admin");
             System.out.println("2. user");
             System.out.println("3. exit");
@@ -366,12 +365,12 @@ public class Main {
                                                             System.out.println("Transaction completed");
                                                             if (cur_price > avgPrice) {
                                                                 double profit = (cur_price - avgPrice) * sellqty;
-                                                                profit = ((int) (profit * 100)) / 100;
+                                                                profit = (double) ((int) (profit * 100)) / 100;
                                                                 dbq.dbprofitloss(user.email,profit);
                                                                 System.out.println("You make Profit of " + profit + " Rs.");
                                                             } else {
                                                                 double loss = (avgPrice - cur_price) * sellqty;
-                                                                loss = ((int) (loss * 100)) / 100;
+                                                                loss = (double) ((int) (loss * 100)) / 100;
                                                                 dbq.dbprofitloss(user.email,-(loss));
                                                                 System.out.println("You make Loss of " + loss + " Rs.");
                                                             }
@@ -408,7 +407,6 @@ public class Main {
                                                                 pst5.setDouble(1, bal);
                                                                 pst5.setString(2, user.email);
                                                                 pst5.executeUpdate();
-
                                                                 con.commit();
 
                                                                 System.out.println("Your balance is = " + bal);
